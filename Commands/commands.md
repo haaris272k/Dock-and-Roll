@@ -31,7 +31,23 @@ Port mapping is a crucial concept in Docker that allows you to make web applicat
 
   ```bash
   docker run -p 'host_port':'container_port' 'image_name'
-- Note - Always stop the docker service before mapping the port(s).
+- Note: Always stop the docker service before mapping the port(s).
+
+## Volume Mapping
+
+Volume mapping allows you to persist data between the host and a Docker container. It's useful for storing configurations, databases, and other data that should survive container restarts.
+
+- **Command Syntax**: To map a volume between the host and a container, use the following command:
+
+  ```bash
+  docker run -v 'host_path':'container_path' 'image_name'
+- **Example**: Mapping a local directory to a container's `/app/data` directory:
+
+  ```bash
+  docker run -v /local/path:/app/data 'image_name'
+
+- Note: Ensure that the host directory exists before using volume mapping.
+
 
 ## Docker Information
 - `docker inspect 'container_name'`: Get detailed information about a Docker container.
@@ -40,5 +56,10 @@ Port mapping is a crucial concept in Docker that allows you to make web applicat
 ## Attach and Detach Mode
 - "Attach" mode runs a container in the foreground.
 - "Detach" mode runs a container in the background.
+  
+  ```bash
+  docker run 'image_name'
+  
+  docker run -d 'image_name'
 
 
