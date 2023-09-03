@@ -31,6 +31,7 @@ Port mapping is a crucial concept in Docker that allows you to make web applicat
 
   ```bash
   docker run -p 'host_port':'container_port' 'image_name'
+- Note - Always stop the docker service before mapping the port(s).
 
 ## Docker Information
 - `docker inspect 'container_name'`: Get detailed information about a Docker container.
