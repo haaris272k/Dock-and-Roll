@@ -74,21 +74,26 @@ To create a Docker image effectively, follow these steps:
 2. **Create a Dockerfile**
    - Craft a Dockerfile with the necessary instructions.
    
-     Here's a Dockerfile for a python script that prints 'Hello World':
+     Here's a Dockerfile for a go script that prints 'Hello World':
    
      ```Dockerfile
-      # Use an official Python runtime as a parent image
-      FROM python:3.8-slim
+      # Use an official Go runtime as a parent image
+      FROM golang:1.16
       
       # Set the working directory within the container
       WORKDIR /app
       
-      # Copy the local contents (including your Python script) into the container's working directory
+      # Copy the local Go script into the container's working directory
       COPY . /app
       
+      # Compile the Go script
+      # I have used hello.go as the name of the script
+      RUN go build hello.go 
+      
       # This line specifies the command that will run when a container based on this image starts
-      # In this case, it runs a Python script named 'hello.py'
-      CMD ["python", "hello.py"]
+      # In this case, it runs the compiled Go binary
+      CMD ["./hello"]
+
 
      ```
 
