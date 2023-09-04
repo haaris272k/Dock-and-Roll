@@ -62,4 +62,67 @@ Volume mapping allows you to persist data between the host and a Docker containe
   
   docker run -d 'image_name'
 
+## Building and Pushing an Image
+
+To create a Docker image effectively, follow these steps:
+
+1. **Understand Application Requirements**
+   - Grasp your application's specific requirements.
+   - Structure the Dockerfile accordingly.
+   - Ensure it includes instructions for selecting a base image, copying files, configuring environment variables, and defining startup procedures.
+   
+2. **Create a Dockerfile**
+   - Craft a Dockerfile with the necessary instructions.
+   
+     Here's a Dockerfile for a python script that prints 'Hello World':
+   
+     ```Dockerfile
+      # Use an official Python runtime as a parent image
+      FROM python:3.8-slim
+      
+      # Set the working directory within the container
+      WORKDIR /app
+      
+      # Copy the local contents (including your Python script) into the container's working directory
+      COPY . /app
+      
+      # This line specifies the command that will run when a container based on this image starts
+      # In this case, it runs a Python script named 'hello.py'
+      CMD ["python", "hello.py"]
+
+     ```
+
+3. **Build the Image**
+   - Navigate to the directory containing the Dockerfile.
+   - Run the following command to build the image:
+   
+     ```shell
+     docker build -t 'image_name' .
+     ```
+   - After the image is built, you can verify its functionality by running the following command in the bash shell:
+     
+      ```bash
+      docker run 'image_name'
+
+4. **Push to DockerHub**
+   - Tag your image with your DockerHub username and the desired version (optional).
+   
+     ```shell
+     docker tag 'image_name' 'dockerhub_username/'image_name':'version'
+     ```
+   
+   - Log in to DockerHub if not already logged in:
+   
+     ```shell
+     docker login
+     ```
+   
+   - Push the image to DockerHub:
+   
+     ```shell
+     docker push 'dockerhub_username/'image_name':'version'
+     ```
+
+By following these steps, you can build a Docker image and push it to DockerHub for distribution.
+
 
