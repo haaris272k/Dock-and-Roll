@@ -130,4 +130,69 @@ To create a Docker image effectively, follow these steps:
 
 By following these steps, you can build a Docker image and push it to DockerHub for distribution.
 
+## Working with Environment Variables in Docker
 
+Environment variables in Docker allow you to pass configuration values to containers at runtime. They are commonly used to provide settings, secrets, or application-specific data to your Dockerized applications.
+
+### Steps to Use Environment Variables
+
+1. **Define Environment Variables in Dockerfile**
+
+   - In your Dockerfile, set environment variables using the `ENV` instruction. For example:
+   
+     ```Dockerfile
+     ENV APP_ENV production
+     ```
+
+2. **Pass Environment Variables During Container Run**
+
+   - When you run a container, use the `-e` or `--env` option to provide values for environment variables. For instance:
+   
+     ```bash
+     docker run -e DATABASE_URL=postgres://user:password@localhost/dbname my-app-image
+     ```
+
+3. **Access Environment Variables in Your Application**
+
+   - In your application code, you can access environment variables easily.
+   
+     - In Python:
+       ```python
+       import os
+       db_url = os.environ.get("DATABASE_URL")
+       ```
+       
+     - In Node.js:
+       ```javascript
+       const dbUrl = process.env.DATABASE_URL;
+       ```
+
+### Example
+
+Let's say you have a web application that connects to a database. Instead of hardcoding the database connection details, you can use environment variables:
+
+1. In your Dockerfile, set environment variables:
+
+   ```Dockerfile
+   ENV DB_HOST=localhost
+   ENV DB_PORT=5432
+   ENV DB_USER=myuser
+   ENV DB_PASSWORD=mypassword
+
+When running your container, you can pass environment variables to configure your application. Here's how you do it:
+
+1. **Using Bash**
+   - Run the container with the desired environment variables:
+
+     ```bash
+     docker run -e DB_HOST=database-server -e DB_USER=appuser my-app-image
+     ```
+
+2. **In Your Application Code (Python)**
+   - In your application code, you can access these environment variables like this:
+
+     ```python
+     import os
+     db_host = os.environ.get("DB_HOST")
+     db_user = os.environ.get("DB_USER")
+     ```
