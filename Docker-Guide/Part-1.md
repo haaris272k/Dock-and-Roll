@@ -1,4 +1,4 @@
-# Docker Notes Part-I
+# Part-I covers essential Docker commands, image management, and fundamental concepts like port and volume mapping. Ideal for Docker beginners, this section provides a solid foundation for containerization.
 
 ## Table of Contents
 1. [Pulling an Image](#pulling-an-image)
