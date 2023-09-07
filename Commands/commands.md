@@ -196,3 +196,48 @@ When running your container, you can pass environment variables to configure you
      db_host = os.environ.get("DB_HOST")
      db_user = os.environ.get("DB_USER")
      ```
+# Entrypoints
+
+The `ENTRYPOINT` instruction in Docker specifies the command that will run when the container starts. It allows you to define the primary command or executable for your container.
+
+- The command should either be in array format (e.g., `["sleep", "5"]`) or in normal format (e.g., `sleep 5`).
+- When using `ENTRYPOINT`, any additional command line arguments provided when running the container will be passed as arguments to the specified command.
+
+### Example
+
+Suppose you have a Dockerfile for a simple Python script that prints a greeting:
+
+```Dockerfile
+FROM python:3
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the Python script into the container
+COPY hello.py .
+
+# Define the entry point
+ENTRYPOINT ["python", "hello.py"]
+```
+hello.py file for this case looks like:
+
+```python
+import sys
+
+# Get the command-line arguments
+arguments = sys.argv[1:]
+
+# Print the arguments
+print("Hello,", " ".join(arguments))
+```
+
+In this example, the `ENTRYPOINT` specifies the primary command to execute when the container starts, and any arguments provided to `docker run` will be passed to `hello.py`.
+
+```bash
+docker run hello-app John
+```
+Output would be like:
+
+```bash
+hello, John
+```
