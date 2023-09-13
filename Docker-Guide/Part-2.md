@@ -1,6 +1,6 @@
 # Part-II 
 
-## Docker Compose and Linking Images
+# Docker Compose and Linking Images
 
 Docker Compose is a powerful tool for defining and running multi-container Docker applications. It allows you to create a configuration file in YAML format to define and link different services easily. This is particularly useful when you have multiple containers that need to work together.
 
@@ -69,3 +69,10 @@ To run a Docker Compose file, you can use the `docker-compose` command. Here's h
 ### Docker Compose Versions
 
 Docker Compose has different versions of configuration files (e.g., V1, V2). It's recommended to use the latest version (e.g., V2 or higher) as it simplifies many aspects of defining services, including linking, and removes some complexities present in earlier versions. For example, V2 eliminates the need to explicitly specify links between services. By using Docker Compose, you can efficiently manage and link Docker containers, making it easier to set up and deploy complex applications with multiple interconnected components.
+
+# Docker Hub and Docker Registry
+
+Docker Hub is a public image repository managed by Docker, Inc. It's a place to find pre-built Docker images for various applications. It's user-friendly, free for many images, and encourages community collaboration.
+
+Docker Registry is a generic term for a server where Docker images are stored. It can be either a public service like Docker Hub or a private, self-hosted registry. Private registries offer control, security, and customization for organizations, making them useful for proprietary or sensitive applications.
+
