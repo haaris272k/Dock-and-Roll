@@ -76,3 +76,27 @@ Docker Hub is a public image repository managed by Docker, Inc. It's a place to 
 
 Docker Registry is a generic term for a server where Docker images are stored. It can be either a public service like Docker Hub or a private, self-hosted registry. Private registries offer control, security, and customization for organizations, making them useful for proprietary or sensitive applications.
 
+# Docker Architecture
+
+Docker primarily follows a client-server architecture, with key components:
+
+- **Docker Client**: The tool you use to manage Docker containers and images.
+
+- **Docker Daemon**: A background service that does the heavy lifting of creating, running, and managing containers.
+
+- **Docker Image**: A blueprint for containers that includes everything an app needs to run.
+
+- **Docker Container**: A running instance of a Docker image. It's isolated and portable.
+
+- **Docker Registry**: A place to store and share Docker images. Docker Hub is a popular public registry.
+
+Here's how it works:
+
+1. **Build Image**: You create an image from a Dockerfile or pull one from a registry using the Docker Client.
+
+2. **Daemon Magic**: The Docker Daemon takes the image and creates a runnable Container.
+
+3. **Container Action**: Your Container runs your app in an isolated environment.
+
+Docker's simplicity and portability make it a powerful tool for app development and deployment.
+
